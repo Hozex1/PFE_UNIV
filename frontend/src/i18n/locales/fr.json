@@ -7,6 +7,7 @@
     "dashboard": "Tableau de bord",
     "actualites": "Actualités",
     "projects": "Projets",
+    "affectation": "Affectation",
     "ai": "Assistant IA",
     "documents": "Documents",
     "calendar": "Calendrier",
@@ -17,6 +18,7 @@
     "settings": "Paramètres",
     "support": "Aide",
     "profile": "Profil",
+    "annonceManagement": "Gestion des annonces",
     "userManagement": "Gestion des utilisateurs"
   },
   "sections": {

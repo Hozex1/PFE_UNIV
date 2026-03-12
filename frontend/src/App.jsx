@@ -31,6 +31,9 @@ import MessagesPage from './pages/MessagesPage';
 import NotificationsPage from './pages/NotificationsPage';
 import AIAssistantPage from './pages/AIAssistantPage';
 import DocumentsPage from './pages/DocumentsPage';
+import AffectationPage from './pages/AffectationPage';
+import AnnonceManagementPage from './pages/AnnonceManagementPage';
+import PFEProjectsPage from './pages/PFEProjectsPage';
 
 /* ── Misc ── */
 import UnauthorizedPage from './pages/UnauthorizedPage';
@@ -81,10 +84,13 @@ function App() {
               <Route path="/dashboard/actualites" element={<ProtectedRoute><DashboardLayout><ActualitesPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/ai" element={<ProtectedRoute><DashboardLayout><AIAssistantPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/documents" element={<ProtectedRoute><DashboardLayout><DocumentsPage /></DashboardLayout></ProtectedRoute>} />
+              <Route path="/dashboard/affectation" element={<ProtectedRoute><DashboardLayout><AffectationPage /></DashboardLayout></ProtectedRoute>} />
+              <Route path="/dashboard/projects" element={<ProtectedRoute><DashboardLayout><PFEProjectsPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/calendar" element={<ProtectedRoute><DashboardLayout><CalendarPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/requests" element={<ProtectedRoute><DashboardLayout><RequestsPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/messages" element={<ProtectedRoute><DashboardLayout><MessagesPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/notifications" element={<ProtectedRoute><DashboardLayout><NotificationsPage /></DashboardLayout></ProtectedRoute>} />
+              <Route path="/dashboard/admin/annonces" element={<ProtectedRoute><DashboardLayout><AnnonceManagementPage /></DashboardLayout></ProtectedRoute>} />
               <Route path="/dashboard/admin/users" element={<ProtectedRoute><DashboardLayout><AdminUsersPage /></DashboardLayout></ProtectedRoute>} />
 
               {/* ── Error pages ── */}
