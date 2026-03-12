@@ -18,6 +18,7 @@ const PAGE_TITLE_KEYS = {
   '/dashboard':                'nav.dashboard',
   '/dashboard/actualites':     'nav.actualites',
   '/dashboard/projects':       'nav.projects',
+  '/dashboard/affectation':    'nav.affectation',
   '/dashboard/ai':             'nav.ai',
   '/dashboard/documents':      'nav.documents',
   '/dashboard/calendar':       'nav.calendar',
@@ -28,6 +29,7 @@ const PAGE_TITLE_KEYS = {
   '/dashboard/settings':       'nav.settings',
   '/dashboard/support':        'nav.support',
   '/dashboard/profile':        'nav.profile',
+  '/dashboard/admin/annonces': 'nav.annonceManagement',
   '/dashboard/admin/users':    'nav.userManagement',
 };
 

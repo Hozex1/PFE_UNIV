@@ -18,21 +18,23 @@ import TeacherDashboard from '../pages/TeacherDashboard';
 import StudentDashboard from '../pages/StudentDashboard';
 import { useAuth } from '../contexts/AuthContext';
 
-/* ── 11 Modules ─────────────────────────────────────────────── */
+/* ── Dashboard modules by role ─────────────────────────────── */
 const ALL_MODULES = [
-  { nameKey: 'nav.dashboard',     path: '/dashboard',                roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.actualites',    path: '/dashboard/actualites',     roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.projects',      path: '/dashboard/projects',       roles: ['etudiant', 'delegue', 'enseignant'] },
-  { nameKey: 'nav.ai',            path: '/dashboard/ai',             roles: ['etudiant', 'delegue', 'enseignant'] },
-  { nameKey: 'nav.documents',     path: '/dashboard/documents',      roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.calendar',      path: '/dashboard/calendar',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.disciplinary',  path: '/dashboard/disciplinary',   roles: ['enseignant', 'president_conseil', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.requests',      path: '/dashboard/requests',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.messages',      path: '/dashboard/messages',       roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.notifications', path: '/dashboard/notifications',  roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin'] },
-  { nameKey: 'nav.settings',      path: '/dashboard/settings',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin'] },
+  { nameKey: 'nav.dashboard',      path: '/dashboard',                roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.actualites',     path: '/dashboard/actualites',     roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.projects',       path: '/dashboard/projects',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.affectation',    path: '/dashboard/affectation',    roles: ['etudiant', 'delegue', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.ai',             path: '/dashboard/ai',             roles: ['etudiant', 'delegue', 'enseignant'] },
+  { nameKey: 'nav.documents',      path: '/dashboard/documents',      roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.calendar',       path: '/dashboard/calendar',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.disciplinary',   path: '/dashboard/disciplinary',   roles: ['enseignant', 'president_conseil', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.requests',       path: '/dashboard/requests',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.messages',       path: '/dashboard/messages',       roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.notifications',  path: '/dashboard/notifications',  roles: ['etudiant', 'delegue', 'enseignant', 'vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.settings',       path: '/dashboard/settings',       roles: ['etudiant', 'delegue', 'enseignant', 'chef_specialite', 'chef_departement', 'vice_doyen', 'admin', 'admin_faculte'] },
   { nameKey: 'nav.support',       path: '/dashboard/support',        roles: ['etudiant', 'delegue', 'enseignant'] },
-  { nameKey: 'nav.userManagement', path: '/dashboard/admin/users',   roles: ['vice_doyen', 'admin'] },
+  { nameKey: 'nav.annonceManagement', path: '/dashboard/admin/annonces', roles: ['vice_doyen', 'admin', 'admin_faculte'] },
+  { nameKey: 'nav.userManagement', path: '/dashboard/admin/users',   roles: ['vice_doyen', 'admin', 'admin_faculte'] },
 ];
 
 /* Map DB roles to the UI role token used by children (student | teacher | admin) */
@@ -40,7 +42,7 @@ function uiRole(roles) {
   if (!roles || !roles.length) return 'student';
   const arr = Array.isArray(roles) ? roles : [roles];
   const upper = arr.map(r => (r || '').toUpperCase());
-  if (upper.some(r => ['ADMIN', 'ADMIN_FACULTY', 'ADMIN_SUPER', 'VICE_DOYEN'].includes(r))) return 'admin';
+  if (upper.some(r => ['ADMIN', 'ADMIN_FACULTE', 'ADMIN_FACULTY', 'ADMIN_SUPER', 'VICE_DOYEN'].includes(r))) return 'admin';
   if (upper.some(r => ['TEACHER', 'ENSEIGNANT', 'SPECIALITE_CHEF', 'CHEF_SPECIALITE', 'DEPARTEMENT_CHEF', 'CHEF_DEPARTEMENT'].includes(r))) return 'teacher';
   return 'student'; // etudiant, delegue, etc.
 }
